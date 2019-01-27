@@ -52,6 +52,7 @@ $('#spin').css('display', 'none');
        
              let weather = response.weather; 
        
+    
         
         //console.log(moviesArray[0].Year);
         
@@ -122,9 +123,87 @@ $('#spin').css('display', 'none');
         let Forcicon3 = "icons/" + forcast[18].weather[0].icon + ".png";
         let Forcicon4 = "icons/" + forcast[26].weather[0].icon + ".png";
         let Forcicon5 = "icons/" + forcast[34].weather[0].icon + ".png";
-        //console.log(moviesArray[0].Year);
+      
+          
+          
+          
+         var d = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+          
+  var n = weekday[d.getDay()];
+       
+          var f1;
+          var f2;
+          var f3;
+          var f4;
+          var f5;
+          
+      if(n == "Sunday"){
+         f1 = "Mon";
+         f2 = "Tue";
+         f3 = "Wed";
+         f4 = "Thu";
+         f5 = "Fri";
+         }    
         
-        
+          
+          if(n == "Monday"){
+         f1 = "Tue";
+         f2 = "Wed";
+         f3 = "Thu";
+         f4 = "Fri";
+         f5 = "Sat";      
+         }
+          
+            if(n == "Tuesday"){
+         f1 = "Wed";
+         f2 = "Thu";
+         f3 = "Fri";
+         f4 = "Sat";
+         f5 = "Sun";
+         }
+          
+             if(n == "Wednesday"){
+         f1 = "Thu";
+         f2 = "Fri";
+         f3 = "Sat";
+         f4 = "Sun";
+         f5 = "Mon";
+         }
+          
+              if(n == "Thursday"){
+         f1 = "Fri";
+         f2 = "Sat";
+         f3 = "Sun";
+         f4 = "Mon";
+         f5 = "Tue";
+         }
+         
+          
+            if(n == "Friday"){
+         f1 = "Sat";
+         f2 = "Sun";
+         f3 = "Mon";
+         f4 = "Tue";
+         f5 = "Wed";
+         }
+          
+            if(n == "Saturday"){
+         f1 = "Sun";
+         f2 = "Mon";
+         f3 = "Tue";
+         f4 = "Wed";
+         f5 = "Thu";
+         }
+         
         var placeholder = ' ';
   
       
@@ -132,13 +211,13 @@ $('#spin').css('display', 'none');
    
             
       placeholder += `
-<h5>Forecast for The Next 5 Days</h5>
+<br>
 <div class="row no-gutter">
-        <div class="col-20"><img src="${Forcicon1}" width="50" height="50"><br>${((forcast[2].main.temp - "273.15").toFixed(2))} <br>°C</div>
-        <div class="col-20"><img src="${Forcicon2}" width="50" height="50"><br>${((forcast[10].main.temp - "273.15").toFixed(2))}<br> °C</div>
-        <div class="col-20"><img src="${Forcicon3}" width="50" height="50"><br>${((forcast[18].main.temp - "273.15").toFixed(2))}<br> °C</div>
-        <div class="col-20"><img src="${Forcicon4}" width="50" height="50"><br>${((forcast[26].main.temp - "273.15").toFixed(2))} <br>°C</div>
-<div class="col-20"><img src="${Forcicon5}" width="50" height="50"><br>${((forcast[34].main.temp - "273.15").toFixed(2))}<br> °C</div>
+        <div class="col-20">${f1}<br><img src="${Forcicon1}" width="50" height="50"><br>${((forcast[2].main.temp - "273.15").toFixed(2))} <br>°C</div>
+        <div class="col-20">${f2}<br><img src="${Forcicon2}" width="50" height="50"><br>${((forcast[10].main.temp - "273.15").toFixed(2))}<br> °C</div>
+        <div class="col-20">${f3}<br><img src="${Forcicon3}" width="50" height="50"><br>${((forcast[18].main.temp - "273.15").toFixed(2))}<br> °C</div>
+        <div class="col-20">${f4}<br><img src="${Forcicon4}" width="50" height="50"><br>${((forcast[26].main.temp - "273.15").toFixed(2))} <br>°C</div>
+<div class="col-20">${f5}<br><img src="${Forcicon5}" width="50" height="50"><br>${((forcast[34].main.temp - "273.15").toFixed(2))}<br> °C</div>
       </div>
       `; 
   
