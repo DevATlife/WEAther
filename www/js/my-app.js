@@ -13,9 +13,27 @@ var mainView = myApp.addView('.view-main', {
 
 // Handle Cordova Device Ready Event
 $(document).on('deviceready', function(e) {
-
+   
+   
+    
+function checkLocation(){
+    if(localStorage.getItem('initLocation') == null){
+    myApp.alert('please use the search bar to enter a city name followed by country code, for instance: London,uk', 'Welcome to WEAther');
+    
+    }
+    
+    else{
+     let   searchCity = localStorage.getItem('initLocation');
+        fetchWeather(searchCity);
+    }
+} 
+    
+    checkLocation();
+    
+    
+    
 $('#cityForm').on('submit', function(e){
-    var searchCity = $('#cityName').val();
+    let searchCity = $('#cityName').val();
     console.log(searchCity); 
     fetchWeather(searchCity);
 
@@ -23,8 +41,7 @@ $('#cityForm').on('submit', function(e){
      $('#spin').css('display', 'block');
     
   });
-  
-    
+ 
     
     
     
@@ -40,7 +57,7 @@ function  fetchWeather(searchCity){
     url:'http://api.openweathermap.org/data/2.5/weather?q=' + searchCity + '&APPID=c1f6fe01645c4e9c4cc21370590c8fbc',
        error: function(XMLHttpRequest) {
            console.log(XMLHttpRequest);
-      myApp.alert('please enter a valid city name followed by countery code, for instance: London,uk', 'Reminder');
+      myApp.alert('please enter a valid city name followed by country code, for instance: London,uk', 'Reminder');
            $('#spin').css('display', 'none');
   }
   }).done(function(response){
@@ -48,8 +65,8 @@ function  fetchWeather(searchCity){
       
 $('#spin').css('display', 'none');
      
-   
-       
+ 
+      
              let weather = response.weather; 
        
     
@@ -59,7 +76,10 @@ $('#spin').css('display', 'none');
         
         var placeholder = ' ';
         $.each(weather, function(index, wea){
-      
+            
+            let loc = wea.main
+     localStorage.setItem('initLocation', searchCity);   
+ 
      let Weaicon = "icons/" + wea.icon + ".png";
             let tempK = response.main.temp;
             let tempC = (tempK - "273.15").toFixed(2);
@@ -233,6 +253,13 @@ $('#spin').css('display', 'none');
  }); /*---------end of onDeviceready function ------------*/
     
 
+
+
+
+
+
+  
+  
 
 
 
