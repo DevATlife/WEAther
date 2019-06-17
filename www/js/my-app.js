@@ -127,7 +127,7 @@ $('#spin').css('display', 'none');
     
       $.ajax({
     method:'GET',
-    url:'http://api.openweathermap.org/data/2.5/forecast?q=' + searchCity + '&APPID=c1f6fe01645c4e9c4cc21370590c8fbc'
+    url:'https://api.openweathermap.org/data/2.5/forecast?q=' + searchCity + '&APPID=c1f6fe01645c4e9c4cc21370590c8fbc'
         }).done(function(result){
           console.log(result);
       
