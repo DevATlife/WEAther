@@ -54,7 +54,7 @@ $('#cityForm').on('submit', function(e){
 function  fetchWeather(searchCity){
   $.ajax({
     method:'GET',
-    url:'http://api.openweathermap.org/data/2.5/weather?q=' + searchCity + '&APPID=c1f6fe01645c4e9c4cc21370590c8fbc',
+    url:'https://api.openweathermap.org/data/2.5/weather?q=' + searchCity + '&APPID=c1f6fe01645c4e9c4cc21370590c8fbc',
        error: function(XMLHttpRequest) {
            console.log(XMLHttpRequest);
       myApp.alert('please enter a valid city name followed by country code, for instance: London,uk', 'Reminder');
